@@ -1,0 +1,20 @@
+{% extends 'base.html'%}
+
+{% load static %}
+
+{% block content%}
+{% load crispy_forms_tags %}
+<div class="album py-5">
+    <main>
+        <div class="container">
+            <div class="row">
+                <div class="mx-auto">
+                    <h3><div class="p-3 border bg-success">{{course.title}}</div></h3>
+                    <img style ="width:60%"src="{{ course.thumbnail.url }}" class="img-thumbnail">
+                    <p>{{course.content|safe}}</p>
+                </div>             
+            </div>
+        </div>
+    </main>
+</div>
+{% endblock %}

@@ -1,0 +1,81 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+<div class="p-5 border bg-transparent"></div>
+ 
+</div>
+<div class="album py-5">
+  <main class="container flex">
+    <div class="row extra_margin">
+      <div class="col-md-8 col-sm-4 col-xs-*">
+        {% for post in posts %}
+          <h3><a href="{{post.get_absolute_url}}">{{post.title}}</a></h3>
+          <p>{{post.publish}}</p>
+          <img style="max-width: 640px 100vw, 640px" src="{{ post.thumbnail.url }}" class="img-thumbnail">
+          <p>{{post.overview}}</p>
+          <button type="button" class="btn btn-success btn-xs"><a href="{{post.get_absolute_url}}">Continue
+              Reading</a></button>
+
+          <a>Comments: {{ post.comments.count }}</a>
+
+        {%endfor%}
+        <div class="row">
+          <div class="col text-center">
+            {% if is_paginated %}
+            {% if page_obj.has_previous %}
+            <a class="btn btn-outline-info mb-4" href="?page=1">First</a>
+            <a class="btn btn-outline-info mb-4" href="?page={{page_obj.previous_page_numbber }}">Previous</a>
+            {%endif%}
+
+            {% for num in page_obj.paginator.page_range %}
+            {% if page_obj.number == num %}
+            <a class="btn btn-info mb-4" href="?page={{num}}">{{num}}</a>
+            {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3'%}
+            <a class="btn btn-outline-info mb-4" href="?page={{num}}">{{num}}</a>
+            {%endif%}
+            {%endfor%}
+            {% if page_obj.has_next%}
+            <a class="btn btn-outline-info mb-4" href="?page={{page_obj.next_page_number}}">Next</a>
+            <a class="btn btn-outline-info mb-4" href="?page={{page_obj.paginator.num_pages }}">Last</a>
+            {%endif%}
+            {%endif%}
+          </div>
+        </div>
+        
+
+      </div>
+      <div class="col-md-4 col-sm-8 col-xs-8">
+        <!-- Div to center the header image/name/social buttons -->
+        <div class="text-center">
+          <!-- Placeholder image using Placeholder.com -->
+          <img style="width: 50%;" src="{% static 'image/2020-09-23-20-27-41.jpg' %}" class="img-rounded" />
+          <!-- Header text (Person's name) -->
+          <h2>Abdulazeez</h2>
+          <h5>Web Developer, DataBase Management</h5>
+          <h6></h6>
+          <!-- Social buttons using anchor elements and btn-primary class to style -->
+          <p>
+            <a class="btn btn-primary btn-xs" href="https://www.facebook.com/Musah.Abdulazeez22" role="button">Facebook</a>
+            <a class="btn btn-primary btn-xs" href="#" role="button">Twitter</a>
+            <a class="btn btn-primary btn-xs" href="#" role="button">Instagram</a>
+            <a class="btn btn-primary btn-xs" href="https://www.youtube.com/channel/UCwcsyfGHMhYzJrWx5GxJahA?view_as=subscriber" role="button">Youtube</a>
+          </p>
+        </div>
+        <div class="col-md-14 col-sm-18 col-xs-18">
+          <div class="text-center">
+            <!-- Placeholder image using Placeholder.com -->
+            <h2 style="background-color: deepskyblue;">Currently Rendining</h2>
+            {% for post in most_recent %}
+            <h5><a href="{{post.get_absolute_url}}">{{post.title}}</a></h5>
+            {%endfor%}
+          </div>
+        </div>
+
+      </div>
+    
+    </div>
+  </main>
+</div>
+{% endblock content %}

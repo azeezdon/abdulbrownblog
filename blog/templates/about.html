@@ -1,0 +1,143 @@
+<h1>About Page</h1>
+
+
+
+{%for post in about %}
+<h1>{{ post.title}}</h1>
+<p>{{post.overview}}</p>
+
+
+{% endfor %}
+
+
+
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="#{% static 'css/main.css' %}">
+  <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+</head>
+<body>
+  <header class="site-header">
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark text-center">
+      <div class="container">
+        <a class="navbar-brand mr-4" href="home.html">Abdul Blog</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarToggle">
+          <div class="navbar-nav mr-auto">
+            <a class="nav-item nav-link" href="home.html">Home</a>
+            <a class="nav-item nav-link" href="">About</a>
+          </div>
+            <!-- Navbar Right Side -->
+          <div class="navbar-nav">
+            <a class="nav-item nav-link" href="#">Login</a>
+            <a class="nav-item nav-link" href="#">Register</a>
+            <a class="nav-item nav-link" href="#">Learn Programming</a>
+            <a class="nav-item nav-link" href="crash_course.html">Crash Course</a>
+              
+          </div>
+        </div>
+      </div>
+    </nav>
+  </header>
+  <main role="main" class="container">
+    <div class="row">
+      <div class="col-md-8">
+        {% for post in index %}
+          <div class="card p-2">
+            <h3><a href="">{{post.title}}</a></h3>
+            <p>{{post.overview}}</p>
+            <img style="width: 30%;" src="#{% static 'image/agefis-13z851QZVtE-unsplash.jpg' %}" class="img-responsive">
+            <p>{{post.description}}</p>
+          </div>
+        {%endfor%}
+      <div class="col-md-4">
+        <div class="content-section fixed">
+          <h3>Our Sidebar</h3>
+          <p class="text-muted">You can put any text here
+            <ul class="list-group">
+              <li class="list-group-item list-group-item-light">Latest Post</li>
+              <li class="list-group-item list-group-item-light">Announcement</li>
+              <li class="list-group-item list-group-item-light">Calendars</li>
+              <li class="list-group-item list-group-item-light">etc</li>
+            </ul>
+          </p>
+        </div>
+      </div>
+    </div>
+  </main>
+  <footer class="bg-dark py-5 mt-25px text-light">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4">
+          <div class="logo">
+            <h6 class="text-white">Abdul Blog</h6>
+          </div>
+          <div class="contact-details">
+            <p class="text-light">Abuja, FCT,  NIGERIA</p>
+            <p class="text-light">Phone: +2348079927876</p>
+            <p class="text-light">Email: <a href="mailto:info@company.com">Info@Company.com</a></p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="menus d-flex">
+            <ul class="list-unstyled">
+              <li> <a href="#">My Account</a></li>
+              <li> <a href="#">Add Listing</a></li>
+              <li> <a href="#">Pricing</a></li>
+              <li> <a href="#">Privacy &amp; Policy</a></li>
+            </ul>
+            <ul class="list-unstyled">
+              <li> <a href="#">Our Partners</a></li>
+              <li> <a href="#">FAQ</a></li>
+              <li> <a href="#">How It Works</a></li>
+              <li> <a href="#">Contact</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="latest-posts"><a href="#">
+            <div class="post d-flex align-items-center">
+              <div class="title"><strong>Hotels for all budgets</strong><span class="date last-meta">October 26, 2016</span></div>
+              </div></a><a href="#">
+              <div class="post d-flex align-items-center">
+                <div class="title"><strong>Great street atrs in London</strong><span class="date last-meta">October 26, 2016</span></div>
+              </div></a><a href="#">
+              <div class="post d-flex align-items-center">
+              <div class="title"><strong>Best coffee shops in Sydney</strong><span class="date last-meta">October 26, 2016</span></div>
+            
+            </div>
+         </div>
+        </div>
+    </div>
+    <div class="copyrights">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6">
+            <p class="text-light">&copy; 2017. All rights reserved. Your great site.</p>
+          </div>
+          <div class="col-md-6 text-right">
+            <pclass="text-light">Template By <a href="https://bootstrapious.com/p/bootstrap-carousel" class="text-white">Abdul</a>
+                <!-- Please do not remove the backlink to Bootstrap Temple unless you purchase an attribution-free license @ Bootstrap Temple or support us at http://bootstrapious.com/donate. It is part of the license conditions. Thanks for understanding :)                         -->
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+    
+    
+</body>
+</html>

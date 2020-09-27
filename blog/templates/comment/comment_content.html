@@ -1,0 +1,9 @@
+{% extends "comment/comments/comment_content.html" %}
+
+{% block content_wrapper_cls %}{% if has_valid_profile %}col-9 col-md-10{% else %}co-11 mx-3{% endif %}{% endblock content_wrapper_cls %}
+{% block comment_content %}   {# override truncate words number - change the number 30 to your desired or 0 if you don't want to fold the comment#}
+    {% render_content comment.content 30 %}
+{% endblock comment_content %}
+
+{% block username_cls %}{% endblock username_cls %}
+{% block reply_link_cls %}btn btn-link ml-1{% endblock reply_link_cls %}

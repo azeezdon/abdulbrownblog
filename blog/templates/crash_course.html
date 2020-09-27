@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="album py-5">
+  <div class="container">
+    <div class="row infinite-container">
+      {% for course in crash_course %}
+      <div class="col-lg-4 infinite-item">
+        <div class="card col-md-12 shadow-sm">
+          <div class="card-body">
+            <h3 class="display-4" style="font-size: 30px"><a href="{% url 'crash_course_detail' course.pk %}">
+              <h3>{{course.title}}</h3>
+            </a></h3>
+            <img src="{{ course.thumbnail.url }}" class="img-thumbnail">
+            <p>{{course.overview}}</p>
+            <button type="button" class="btn btn-success btn-xs"><a href="{% url 'crash_course_detail' course.pk %}">Continue
+                Reading</a></button>
+          </div>
+        </div>
+      </div>
+      {%endfor%}
+      {% if page_obj.has_next %}
+      <a class="infinite-more-link" href="?page={{ page_obj.next_page_number }}"></a>
+      {% endif %}
+      <div class="d-flex justify-content-center" style="display:none;">
+        <div class="spinner-border" role="status">
+         <span class="sr-only">Loading...</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="/static/js/jquery-2.2.4.min.js"></script>
+<script src="/static/js/jquery.waypoints.min.js"></script>
+<script src="/static/js/infinite.min.js"></script>
+
+<script>
+    var infinite = new Waypoint.Infinite({
+        element: $('.infinite-container')[0],
+        handler: function(direction) {
+        
+    },
+    offset: 'bottom-in-view',
+    onBeforePageLoad: function () {
+    $('.spinner-border').show();
+    },
+    onAfterPageLoad: function () {
+    $('.spinner-border').hide();
+    }
+    
+        
+    });
+
+</script>
+{% endblock content %}

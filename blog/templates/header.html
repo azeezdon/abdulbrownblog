@@ -1,0 +1,53 @@
+{% load static %}
+<header class="site-header fixed-top">
+  <nav class="navbar navbar-expand-md navbar-light bg-white">
+    <div class="container">
+      <a class="navbar-brand mr-4" href="{% url 'index' %}">Abdul Blog</a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarToggle"
+        aria-controls="navbarToggle"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarToggle">
+        <div class="navbar-nav mr-auto"></div>
+
+        <!-- Navbar Right Side -->
+        <div class="navbar-nav">
+          <a class="nav-item nav-link" href="{% url 'crash_course' %}"
+            >Django</a
+          >
+        </div>
+        <div class="navbar-nav">
+          <a class="nav-item nav-link" href="{% url 'course1' %}"
+            >Python</a
+          >
+        </div>
+        <div class="dropdown">
+          <button
+            class="btn btn-secondary dropdown-toggle"
+            type="button"
+            id="dropdownMenuButton"
+            data-toggle="dropdown"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >
+            Dropdown button
+          </button>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <a class="dropdown-item" href="#"
+              >Computer Science Course PDF</a
+            >
+            <a class="dropdown-item" href="#">Programming</a>
+            <a class="dropdown-item" href="#">Motivational Words</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>  
+</header>

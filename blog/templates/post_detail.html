@@ -1,0 +1,81 @@
+{% extends 'base.html' %} {% block content %} {% load static %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-8  mb-4  mt-3 left  top">
+            <h1>{% block title %} {{ post.title }} {% endblock title %}</h1>
+            <p class=" text-muted">{{ post.author }} | {{ post.publish }}</p>
+            <p class="card-text ">{{ post.content | safe }}</p>
+
+            
+        </div>
+        <div class="col-md-4 col-sm-8 col-xs-8">
+            <!-- Div to center the header image/name/social buttons -->
+            <div class="text-center">
+                <!-- Placeholder image using Placeholder.com -->
+                <img style="width: 50%;" src="{% static 'image/taisiia-stupak-muyeBGUyT6A-unsplash.jpg' %}"
+                    class="img-rounded" />
+                <!-- Header text (Person's name) -->
+                <h2>Abdulazeez</h2>
+                <h5>Web Developer, DataBase Management</h5>
+                <h6></h6>
+                <!-- Social buttons using anchor elements and btn-primary class to style -->
+                <p>
+                    <a class="btn btn-primary btn-xs" href="#" role="button">Facebook</a>
+                    <a class="btn btn-primary btn-xs" href="#" role="button">Twitter</a>
+                    <a class="btn btn-primary btn-xs" href="#" role="button">Instagram</a>
+                    <a class="btn btn-primary btn-xs" href="#" role="button">Youtube</a>
+                </p>
+            </div>
+            <div class="col-md-14 col-sm-18 col-xs-18">
+                <div class="text-center">
+                    <!-- Placeholder image using Placeholder.com -->
+                    <h2 style="background-color: deepskyblue;">Currently Rendining</h2>
+                    {% for post in most_recent %}
+                    <h5><a href="{{post.get_absolute_url}}">{{post.title}}</a></h5>
+                    {%endfor%}
+                </div>
+            </div>
+
+        </div>
+        {% include 'comment.html' %}
+    </div>
+</div>
+
+
+
+
+
+
+<script>
+    function formExit() {
+        document.getElementById("newForm").remove();
+    }
+
+    function myFunction(id) {
+        if (document.contains(document.getElementById("newForm"))) {
+            document.getElementById("newForm").remove();
+        }
+
+        var d1 = document.getElementById(id);
+        d1.insertAdjacentHTML('afterend',
+            '<form id="newForm" class="form-insert py-2" method="post"> \
+                <div class="d-flex justify-content-between"><h2>Reply:</h2><div><button type="button" class="btn btn-outline-secondary" onclick="formExit()"">Close</button></div></div> \
+                <label for="id_name">Name:</label> \
+                <input type="text" name="name" class="col-sm-12" maxlength="50" required="" id="id_name">\
+                <select name="parent" class="d-none" id="id_parentt"> \
+                <option value="' + id + '" selected="' + id + '"></option> \
+                </select> \
+                <label for="id_content">Content:</label> \
+                <textarea name="content" cols="40" rows="5" class="form-control" required id="id_content"></textarea> \
+                {% csrf_token %} \
+                <button type="Post Comment" class="btn btn-primary btn-lg btn-block">Post Comment</button> \
+              </form>');
+
+        //document.querySelector('#id_parentt [value="' + id + '"]').selected = true;
+    }
+
+    $('#myForm').trigger("reset");
+</script>
+
+{% endblock content %}

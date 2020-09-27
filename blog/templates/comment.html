@@ -1,0 +1,43 @@
+{% load crispy_forms_tags %}
+
+<div class=" col-md-8 col-sm-4 col-xs-* card mb-4  mt-3 ">
+    <!-- comments -->
+    {% with comments.count as total_comments %}
+    <h2>{{ total_comments }} comments</h2>
+
+    <p>
+        {% endwith %} {% for comment in comments %}
+    </p>
+    {% endfor %} {% load mptt_tags %}
+
+    <div>
+        {% recursetree comments %}
+        <div id="{{ node.id }}" class="comments" style='padding: 10px;'>
+            <p class="font-weight-bold">
+                {{ node.name }}
+                <span class=" text-muted font-weight-normal">
+                    {{ node.publish }}
+                </span>
+            </p>
+            {{ node.content | linebreaks}}
+            {% if node.level < 3 %}
+            <button class="button" onclick="myFunction({{ node.id }})">Reply</button>
+            {% endif %}
+        </div>
+        {% if not node.is_leaf_node %}
+        <div class="children pl-2 pl-md-5">
+            {{ children }}
+        </div>
+        {% endif %}
+        {% endrecursetree %}
+    </div>
+</div>
+<div class="col-md-8 col-sm-4 col-xs-* card mb-4  mt-3 ">
+    <div class="card-body">
+        <h3>Leave a comment</h3>
+        <form method="post" style="margin-top: 1.3em;">
+            {{ comment_form | crispy }} {% csrf_token %}
+            <button type="Post Comment" class="btn btn-primary  btn-lg">Post Comment</button>
+        </form>
+    </div>
+</div>
