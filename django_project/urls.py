@@ -17,7 +17,6 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path, include
-from filebrowser.sites import site
 from django.conf.urls import url
 from django.views.static import serve
 from courses.views import CourseDetailView,CourseListView, Course1View, Course1_detailDetailView
@@ -25,7 +24,6 @@ from blog.views import PostListView, post_detail
 
 urlpatterns = [
     path('grappelli/', include('grappelli.urls')),
-    path('mce_filebrowser/', site.urls),
     path('admin/', admin.site.urls),
     path('tinymce/', include('tinymce.urls')),
     path('', PostListView.as_view(), name='index'),

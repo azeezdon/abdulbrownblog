@@ -35,7 +35,6 @@ ALLOWED_HOSTS = ['salty-sierra-63275.herokuapp.com']
 INSTALLED_APPS = [
     'grappelli',
     'sorl.thumbnail',
-    'mce_filebrowser',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.sites',
