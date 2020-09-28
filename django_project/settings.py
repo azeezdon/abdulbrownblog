@@ -25,9 +25,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'csd(uy(^x!folkau3o4p+rm32v&m0e91mc5+7yw6lrw!48-b7e'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['salty-sierra-63275.herokuapp.com']
 
 
 # Application definition
