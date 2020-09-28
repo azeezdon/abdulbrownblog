@@ -1,8 +1,5 @@
 alabaster==0.7.12
 aldryn-boilerplates==0.8.0
-anaconda-client==1.7.2
-anaconda-navigator==1.9.6
-anaconda-project==0.8.2
 appdirs==1.4.3
 asgiref==3.2.10
 asn1crypto==0.24.0
