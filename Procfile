@@ -1,1 +1,1 @@
-web: gunicorn Azeezblog.wsgi --log-file -
+web: gunicorn azeezbrownblog.wsgi --log-file -
