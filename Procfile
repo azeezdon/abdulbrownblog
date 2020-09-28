@@ -1,1 +1,1 @@
-web: gunicorn azeezbrownblog.wsgi
+web: gunicorn django_project.wsgi
